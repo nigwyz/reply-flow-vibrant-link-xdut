@@ -1,0 +1,46 @@
+{
+  "app_name": "omni_support",
+  "agents": [
+    {
+      "agent_id": "6a07bb3c09d6c4e560047491",
+      "name": "Customer Support Agent",
+      "provider_id": "Anthropic",
+      "model": "claude-sonnet-4-6",
+      "has_knowledge_base": true,
+      "rag_id": "6a07bb07b0cd284a61d6ffb8",
+      "rag_name": "productknowledgebasegizp",
+      "tool_configs": [
+        {
+          "tool_name": "slack",
+          "tool_source": "composio",
+          "action_names": ["SLACK_CHAT_POST_MESSAGE"]
+        },
+        {
+          "tool_name": "telegram",
+          "tool_source": "composio",
+          "action_names": ["TELEGRAM_SEND_MESSAGE", "TELEGRAM_GET_UPDATES"]
+        }
+      ]
+    }
+  ],
+  "knowledge_bases": [
+    {
+      "rag_id": "6a07bb07b0cd284a61d6ffb8",
+      "rag_name": "productknowledgebasegizp",
+      "display_name": "product_knowledge_base"
+    }
+  ],
+  "database": {
+    "db_name": "app_dc3200719f9220899ac4542f",
+    "collections": ["conversations", "customers", "escalations"]
+  },
+  "workflow": {
+    "nodes": [
+      {"id": "input_node", "type": "Input", "label": "Customer Message", "nodeCategory": "input"},
+      {"id": "support_agent", "type": "Agent", "label": "Customer Support Agent", "nodeCategory": "agent"}
+    ],
+    "edges": [
+      {"source": "input_node", "target": "support_agent"}
+    ]
+  }
+}

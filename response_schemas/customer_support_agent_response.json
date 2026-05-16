@@ -1,0 +1,26 @@
+{
+  "agent_name": "Customer Support Agent",
+  "agent_id": "6a07bb3c09d6c4e560047491",
+  "description": "Answers customer inquiries about products, pricing, availability, order status, and technical specs by searching the product knowledge base. Escalates unresolvable queries to a human via Slack notification.",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "reply": "string",
+    "status": "string",
+    "escalated": "boolean",
+    "escalation_reason": "string",
+    "channel": "string",
+    "customer_name": "string",
+    "suggested_followup": "string"
+  },
+  "example_response": {
+    "reply": "The message to send to the customer",
+    "status": "Outcome of this turn",
+    "escalated": false,
+    "escalation_reason": "Why it was escalated, empty if resolved",
+    "channel": "Which channel the conversation is on",
+    "customer_name": "The customer's name or identifier",
+    "suggested_followup": "Optional next-step suggestion for admin"
+  }
+}
